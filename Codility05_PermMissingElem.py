@@ -1,0 +1,45 @@
+'''
+PermMissingElem
+An array A consisting of N different integers is given. The array contains integers in the range [1..(N + 1)], which means that exactly one element is missing.
+
+Your goal is to find that missing element.
+
+Write a function:
+
+class Solution { public int solution(int[] A); }
+
+that, given an array A, returns the value of the missing element.
+
+For example, given array A such that:
+
+  A[0] = 2
+  A[1] = 3
+  A[2] = 1
+  A[3] = 5
+the function should return 4, as it is the missing element.
+
+Write an efficient algorithm for the following assumptions:
+
+N is an integer within the range [0..100,000];
+the elements of A are all distinct;
+each element of array A is an integer within the range [1..(N + 1)].
+'''
+# def findMissingPermElement(array):
+#   N = len(array)
+#   res = (N+1)*(N+2)//2
+#   for element in array:
+#     res -= element
+#   return res
+
+def findMissingPermElement(array):
+  N = len(array)
+  if N==0:
+    return 0
+  res = N+1
+  for index, element in enumerate(array):
+    res^=(index+1)^element
+  return res
+
+if __name__=='__main__':
+  print(findMissingPermElement([2, 3, 1, 5]))
+  print(findMissingPermElement([]))
