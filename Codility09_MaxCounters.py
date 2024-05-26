@@ -55,15 +55,15 @@ each element of array A is an integer within the range [1..N + 1].
 def max_counters(N, A):
     res = [0 for _ in range(N)]
     max_val = 0
-    min_val = 0
+    floor_val = 0
     for ops in A: 
         if N+1 == ops:
-            min_val = max_val
+            floor_val = max_val
         else:
             ops-=1
-            res[ops] = max(res[ops]+1, min_val+1)
+            res[ops] = max(res[ops]+1, floor_val+1)
             max_val = max(res[ops], max_val)
-    res = [max(ops, min_val) for ops in res]
+    res = [max(ops, floor_val) for ops in res]
     return res
 
 if __name__=='__main__':
